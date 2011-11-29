@@ -1,0 +1,1 @@
+{"allowed": ["<?php echo implode('", "', $allowed); ?>"], "denied": ["<?php echo implode('", "', $denied); ?>"]}
