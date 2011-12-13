@@ -1,6 +1,7 @@
 <?php
     echo $this->Html->css('/permitted/js/dynatree/skin/ui.dynatree');
     echo $this->Html->css('/permitted/css/permitted');
+    echo $this->Html->css('/permitted/css/jquery.contextMenu');
 ?>
 <div class="permitted_wrapper">
     <a id="permitted_instruction" href="javascript: void(0);">Hide Instructions</a>
@@ -36,11 +37,18 @@
     echo $this->Html->script('/permitted/js/jquery/jquery');
     echo $this->Html->script('/permitted/js/jquery/jquery-ui.custom');
     echo $this->Html->script('/permitted/js/jquery/jquery.cookie');
-
+    echo $this->Html->script('/permitted/js/jquery.contextMenu');
     echo $this->Html->script('/permitted/js/dynatree/jquery.dynatree');
     echo $this->Html->script('/permitted/js/permitted');
 
 ?>
+<ul id="permittedMenu" class="contextMenu">
+    <li class="add">
+        <a href="#add">Add</a>
+        <a href="#edit">Edit</a>
+        <a href="#delete">Delete</a>
+    </li>
+</ul>
 <script type="text/javascript">
 var aros = <?php echo $this->Javascript->object($aros); ?>;
 var acos = <?php echo $this->Javascript->object($acos); ?>;
@@ -146,6 +154,18 @@ jQuery(document).ready(function () {
                 }
             }
         }
+    });
+
+    jQuery('.dynatree-node').contextMenu({
+        menu: 'permittedMenu'
+    },
+        function(action, el, pos) {
+//        alert(
+//            ''Action: '' + action + ''\n\n'' +
+//            ''Element ID: '' + $(el).attr(''id'') + ''\n\n'' +
+//            ''X: '' + pos.x + ''  Y: '' + pos.y + '' (relative to element)\n\n'' +
+//            ''X: '' + pos.docX + ''  Y: '' + pos.docY+ '' (relative to document)''
+//            );
     });
 });
 
